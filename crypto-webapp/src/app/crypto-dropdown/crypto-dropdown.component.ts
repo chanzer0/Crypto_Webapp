@@ -15,13 +15,24 @@ export class CryptoDropdownComponent implements OnInit {
   daily_api_url = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=BTC&market=CNY&apikey=ZBEjmKdpZAO1LlfQP3Ca";
   weekly_api_url = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_WEEKLY&symbol=BTC&market=CNY&apikey=ZBEjmKdpZAO1LlfQP3Ca";
   monthly_api_url = "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=BTC&market=CNY&apikey=ZBEjmKdpZAO1LlfQP3Ca";
-  first_pair : string;
-  second_pair : string;
-  timeframe : string;
+  first_pair = "";
+  second_pair = "";
+  timeframe = "";
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  updateFirstPair(pair : string){
+    this.first_pair = pair;
+  }
+
+  updateSecondPair(pair : string){
+    this.second_pair = pair;
+  }
+
+  updateTimeframe(time : string){
+    this.timeframe = time;
+  }
 }
