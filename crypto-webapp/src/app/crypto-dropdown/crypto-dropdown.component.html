@@ -1,33 +1,33 @@
 <div class="d-flex justify-content-around align-items-center">
 
   <div class="dropdown">
-    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Pairing 1 <span class="caret"></span></button>
+    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Symbol <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#" (click)="updateFirstPair('BTC')">BTC</a></li>
+      <li><a class="dropdown-item" href="#" (click)="updateSymbol('BTC')">BTC</a></li>
       <div class="dropdown-divider"></div>
-      <li><a class="dropdown-item" href="#" (click)="updateFirstPair('ETH')">ETH</a></li>
+      <li><a class="dropdown-item" href="#" (click)="updateSymbol('ETH')">ETH</a></li>
       <div class="dropdown-divider"></div>
-      <li><a class="dropdown-item" href="#" (click)="updateFirstPair('LTC')">LTC</a></li>
+      <li><a class="dropdown-item" href="#" (click)="updateSymbol('LTC')">LTC</a></li>
     </ul>
   </div>
 
-  <div *ngIf="first_pair.length > 0">
-      <span class="badge badge-default">{{first_pair}}</span>
+  <div *ngIf="symbol.length > 0">
+      <span class="badge badge-default">{{symbol}}</span>
   </div>
 
   <div class="dropdown">
-    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Pairing 2 <span class="caret"></span></button>
+    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Market <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#" (click)="updateSecondPair('USD')">USD</a></li>
+      <li><a class="dropdown-item" href="#" (click)="updateMarket('USD')">USD</a></li>
       <div class="dropdown-divider"></div>
-      <li><a class="dropdown-item" href="#" (click)="updateSecondPair('EUR')">EUR</a></li>
+      <li><a class="dropdown-item" href="#" (click)="updateMarket('EUR')">EUR</a></li>
       <div class="dropdown-divider"></div>
-      <li><a class="dropdown-item" href="#" (click)="updateSecondPair('CNY')">CNY</a></li>
+      <li><a class="dropdown-item" href="#" (click)="updateMarket('CNY')">CNY</a></li>
     </ul>
   </div>
 
-  <div *ngIf="second_pair.length > 0">
-      <span class="badge badge-default">{{second_pair}}</span>
+  <div *ngIf="market.length > 0">
+      <span class="badge badge-default">{{market}}</span>
   </div>
 
   <div class="dropdown">
@@ -45,6 +45,10 @@
       <span class="badge badge-default">{{timeframe}}</span>
   </div>
 
-  <button class="btn btn-primary btn-lg " type="button" (click)="chartPairing()"> <span class="fa fa-bar-chart" style="font-size:24px;color:white"></span> Chart</button>
+  <button class="btn btn-primary btn-lg " type="button" (click)="generateAPI_URL()"><i class="fa fa-btc"></i> Chart</button>
 
+</div>
+
+<div class="container">
+  <app-crypto-chart></app-crypto-chart>
 </div>

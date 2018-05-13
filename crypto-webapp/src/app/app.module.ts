@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CryptoDropdownComponent } from './crypto-dropdown/crypto-dropdown.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { CryptoChartComponent } from './crypto-chart/crypto-chart.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { FooterComponent } from './footer/footer.component';
     AppComponent,
     CryptoDropdownComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CryptoChartComponent
   ],
   imports: [
     BrowserModule,
