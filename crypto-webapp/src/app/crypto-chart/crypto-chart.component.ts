@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CryptoChartComponent implements OnInit {
 
+  private open: number[];
+  private high: number[];
+  private low: number[];
+  private close: number[];
+
   constructor() { }
 
   ngOnInit() {

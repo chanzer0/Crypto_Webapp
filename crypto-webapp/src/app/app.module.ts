@@ -7,6 +7,8 @@ import { CryptoDropdownComponent } from './crypto-dropdown/crypto-dropdown.compo
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CryptoChartComponent } from './crypto-chart/crypto-chart.component';
+import { MarketList } from './crypto-dropdown/market-list';
+import { CurrencyList } from './crypto-dropdown/currency-list';
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { CryptoChartComponent } from './crypto-chart/crypto-chart.component';
     CryptoDropdownComponent,
     HeaderComponent,
     FooterComponent,
-    CryptoChartComponent
+    CryptoChartComponent,
+    MarketList
   ],
   imports: [
     BrowserModule,
