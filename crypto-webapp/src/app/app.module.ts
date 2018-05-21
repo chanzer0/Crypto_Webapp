@@ -7,8 +7,7 @@ import { CryptoDropdownComponent } from './crypto-dropdown/crypto-dropdown.compo
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CryptoChartComponent } from './crypto-chart/crypto-chart.component';
-import { MarketList } from './crypto-dropdown/market-list';
-import { CurrencyList } from './crypto-dropdown/currency-list';
+import { DxChartModule } from 'devextreme-angular';
 
 
 @NgModule({
@@ -18,13 +17,14 @@ import { CurrencyList } from './crypto-dropdown/currency-list';
     HeaderComponent,
     FooterComponent,
     CryptoChartComponent,
-    MarketList
   ],
   imports: [
     BrowserModule,
     AlertModule.forRoot(),
+    DxChartModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
