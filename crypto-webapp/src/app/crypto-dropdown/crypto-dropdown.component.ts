@@ -8,8 +8,8 @@ import { CryptoChartComponent } from '../crypto-chart/crypto-chart.component';
 })
 export class CryptoDropdownComponent implements OnInit {
 
-  @ViewChild(CryptoChartComponent) private _child: 
-  CryptoChartComponent;
+  @ViewChild(CryptoChartComponent) private _child:
+    CryptoChartComponent;
 
 
   /*
@@ -220,6 +220,31 @@ export class CryptoDropdownComponent implements OnInit {
       return;
     }
 
-    this._child.chart(this.currency, this.market, 'day')
+    /*
+     * Convert timeframe to what the api uses
+     */
+    this.convertTimeframe();
+    this._child.chart(this.currency, this.market, this.timeframe)
+
+    /*
+     * Reset the fields
+     */
+    this.currency = ""
+    this.market = ""
+    this.timeframe = ""
+  }
+
+  convertTimeframe() {
+    switch (this.timeframe) {
+      case "DAILY": {
+        this.timeframe = 'day';
+      }
+      case "HOURLY": {
+        this.timeframe = 'hour'
+      }
+      case "MINUTE": {
+        this.timeframe = 'minute';
+      }
+    }
   }
 }

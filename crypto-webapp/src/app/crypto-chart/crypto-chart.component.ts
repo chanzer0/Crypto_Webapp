@@ -12,12 +12,12 @@ import { OHLC } from '../models/ohlc';
 export class CryptoChartComponent implements OnInit{
 
   private loaded: boolean;
-
+  private title: string;
   private currency: string;
   private market: string;
   private timeframe: string;
 
-  private cryptoOHLC: any;
+  private crypto_OHLC: any;
   private objectKeys = Object.keys;
 
   constructor(private ohlc:CryptoOhlcService) {
@@ -34,11 +34,12 @@ export class CryptoChartComponent implements OnInit{
 
     this.ohlc.getOHLC(this.timeframe, this.currency, this.market)
     .subscribe(results => {
-      this.cryptoOHLC = results;
-      console.log(results);
+      console.log(results["Data"]);
+      this.crypto_OHLC = results["Data"];
     })
+
     this.loaded = true;
-    console.log('My object : ' + this.cryptoOHLC);
+    this.title = currency + " / " + market;
   }
 
 }

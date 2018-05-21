@@ -36,15 +36,15 @@
     </button>
     <ul class="dropdown-menu">
       <li>
-        <a class="dropdown-item" href="#" (click)="updateTimeframe('INTRADAY')">Intraday (5min)</a>
+        <a class="dropdown-item" href="#" (click)="updateTimeframe('MINUTE')">Intraday (1min)</a>
+      </li>
+      <div class="dropdown-divider"></div>
+      <li>
+        <a class="dropdown-item" href="#" (click)="updateTimeframe('HOURLY')">Intraday (1hr)</a>
       </li>
       <div class="dropdown-divider"></div>
       <li>
         <a class="dropdown-item" href="#" (click)="updateTimeframe('DAILY')">Daily (1d)</a>
-      </li>
-      <div class="dropdown-divider"></div>
-      <li>
-        <a class="dropdown-item" href="#" (click)="updateTimeframe('WEEKLY')">Weekly (1w)</a>
       </li>
     </ul>
   </div>
