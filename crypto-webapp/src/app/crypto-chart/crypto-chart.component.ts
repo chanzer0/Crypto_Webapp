@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { DxChartModule } from 'devextreme-angular';
-import { CryptoOhlcService } from '../services/crypto-ohlc.service';
+import { CryptoService } from '../services/crypto.service';
 import { OHLC } from '../models/ohlc';
 
 @Component({
   selector: 'app-crypto-chart',
   templateUrl: './crypto-chart.component.html',
   styleUrls: ['./crypto-chart.component.css'],
-  providers: [CryptoOhlcService]
+  providers: [CryptoService]
 })
 export class CryptoChartComponent implements OnInit{
 
@@ -20,7 +20,7 @@ export class CryptoChartComponent implements OnInit{
   private crypto_OHLC: any;
   private objectKeys = Object.keys;
 
-  constructor(private ohlc:CryptoOhlcService) {
+  constructor(private ohlc:CryptoService) {
   }
 
   ngOnInit() {
@@ -31,6 +31,7 @@ export class CryptoChartComponent implements OnInit{
     this.currency = currency;
     this.market = market;
     this.timeframe = timeframe; 
+    this.crypto_OHLC = null;
 
     this.ohlc.getOHLC(this.timeframe, this.currency, this.market)
     .subscribe(results => {

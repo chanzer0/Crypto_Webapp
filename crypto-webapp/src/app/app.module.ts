@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CryptoChartComponent } from './crypto-chart/crypto-chart.component';
 import { DxChartModule } from 'devextreme-angular';
-import { CryptoOhlcService } from './services/crypto-ohlc.service';
+import { CryptoService } from './services/crypto.service';
 
 
 @NgModule({
@@ -27,7 +27,7 @@ import { CryptoOhlcService } from './services/crypto-ohlc.service';
     HttpClientModule
   ],
   providers: [
-    CryptoOhlcService
+    CryptoService
   ],
   bootstrap: [AppComponent]
 })
