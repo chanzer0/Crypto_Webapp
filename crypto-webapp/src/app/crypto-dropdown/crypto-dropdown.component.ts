@@ -78,19 +78,17 @@ export class CryptoDropdownComponent implements OnInit {
   }
 
   convertTimeframe() {
-    switch (this.timeframe) {
-      case 'DAILY': {
-        this.timeframe = 'day';
-      }
-      case 'HOURLY': {
-        this.timeframe = 'hour'
-      }
-      case 'MINUTE': {
-        this.timeframe = 'minute';
-      }
-      default: {
-        console.log("Something went wrong dawg... check the timeframe")
-      }
+    if (this.timeframe === "DAILY"){
+      this.timeframe = 'day';
+    }
+    else if (this.timeframe === "HOURLY"){
+      this.timeframe = 'hour';
+    }
+    else if (this.timeframe === "MINUTE"){
+      this.timeframe = 'minute';
+    }
+    else {
+      console.log("Error: timeframe not found or valid")
     }
   }
 }

@@ -35,7 +35,6 @@ export class CryptoChartComponent implements OnInit{
 
     this.ohlc.getOHLC(this.timeframe, this.currency, this.market)
     .subscribe(results => {
-      console.log(results["Data"]);
       this.crypto_OHLC = results["Data"];
     })
 
