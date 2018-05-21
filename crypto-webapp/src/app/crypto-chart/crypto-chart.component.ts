@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DxChartModule } from 'devextreme-angular';
-import { CryptoOhlcService, OHLC } from '../services/crypto-ohlc.service';
+import { CryptoOhlcService } from '../services/crypto-ohlc.service';
+import { OHLC } from '../models/ohlc';
 
 @Component({
   selector: 'app-crypto-chart',
@@ -11,9 +12,13 @@ import { CryptoOhlcService, OHLC } from '../services/crypto-ohlc.service';
 export class CryptoChartComponent implements OnInit{
 
   private loaded: boolean;
-  private name: string;
 
-  cryptoOHLC: OHLC[];
+  private currency: string;
+  private market: string;
+  private timeframe: string;
+
+  private cryptoOHLC: any;
+  private objectKeys = Object.keys;
 
   constructor(private ohlc:CryptoOhlcService) {
   }
@@ -22,9 +27,18 @@ export class CryptoChartComponent implements OnInit{
     this.loaded = false;
   }
 
-  chart(name: string){
-    this.cryptoOHLC = this.ohlc.getOHLC();
-    this.name = name;
+  chart(currency: string, market:string, timeframe: string){
+    this.currency = currency;
+    this.market = market;
+    this.timeframe = timeframe; 
+
+    this.ohlc.getOHLC(this.timeframe, this.currency, this.market)
+    .subscribe(results => {
+      this.cryptoOHLC = results;
+      console.log(results);
+    })
     this.loaded = true;
+    console.log('My object : ' + this.cryptoOHLC);
   }
+
 }

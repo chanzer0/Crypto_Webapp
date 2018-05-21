@@ -220,6 +220,6 @@ export class CryptoDropdownComponent implements OnInit {
       return;
     }
 
-    this._child.chart(this.currency)
+    this._child.chart(this.currency, this.market, 'day')
   }
 }

@@ -1,21 +1,6 @@
 <div class="d-flex justify-content-around align-items-center">
 
   <div class="dropdown">
-    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Market
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li *ngFor="let market of market_list">
-        <a class="dropdown-item" href="#" (click)="updateMarket(market)">{{market}}</a>
-      </li>
-    </ul>
-  </div>
-
-  <div *ngIf="market.length > 0">
-    <span class="badge badge-default">{{market}}</span>
-  </div>
-
-  <div class="dropdown">
     <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Currency
       <span class="caret"></span>
     </button>
@@ -28,6 +13,21 @@
 
   <div *ngIf="currency.length > 0">
     <span class="badge badge-default">{{currency}}</span>
+  </div>
+
+  <div class="dropdown">
+    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">Market
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li *ngFor="let market of market_list">
+        <a class="dropdown-item" href="#" (click)="updateMarket(market)">{{market}}</a>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="market.length > 0">
+    <span class="badge badge-default">{{market}}</span>
   </div>
 
   <div class="dropdown">
