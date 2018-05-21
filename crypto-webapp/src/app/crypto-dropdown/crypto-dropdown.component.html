@@ -5,7 +5,7 @@
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-      <li *ngFor="let currency of currency_list">
+      <li *ngFor="let currency of objectKeys(currency_list)">
         <a class="dropdown-item" href="#" (click)="updateCurrency(currency)">{{currency}}</a>
       </li>
     </ul>

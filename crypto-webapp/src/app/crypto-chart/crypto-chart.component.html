@@ -1,10 +1,4 @@
-<div *ngIf="cryptoOHLC">
-    <div id="crypto-container" *ngFor="let crypto of objectKeys(crypto_OHLC)">
-        <span>{{ crypto }}</span>
-    </div>
-</div>
-
-<div *ngIf="loaded">
+<div *ngIf="loaded" padding-top="25px">
     <dx-chart id="chart" title="{{title}}" [dataSource]="crypto_OHLC">
         <dxi-series name="{{currency}}" openValueField="open" highValueField="high" lowValueField="low" closeValueField="close">
             <dxo-reduction color="red"></dxo-reduction>
@@ -12,7 +6,7 @@
         <dxo-common-series-settings argumentField="time" type="candlestick">
         </dxo-common-series-settings>
         <dxo-legend itemTextPosition="left"></dxo-legend>
-        <dxi-value-axis [tickInterval]="10">
+        <dxi-value-axis [tickInterval]="1">
             <dxo-title text="{{market}}"></dxo-title>
             <dxo-label>
                 <dxo-format type="currency" [precision]="0">

@@ -22,26 +22,23 @@ export class CryptoDropdownComponent implements OnInit {
   ];
 
   private currency_list:string[] = [];
+  private objectKeys = Object.keys;
 
   constructor(private ohcl:CryptoService) { }
 
   ngOnInit() {
     this.ohcl.getCoinList()
     .subscribe(results => {
+      this.currency_list = results["Data"];
       console.log(results["Data"]);
-      console.log(results["Data"]["ZEC"]);
-      console.log(results["Data"]["ZEC"]["FullName"]);
-
-      /* Ugly hack to remove the leading and trailing quotation marks in the FullName object */
-      this.currency_list.push( JSON.stringify(results["Data"]["ZEC"]["FullName"]).substr(1, ((JSON.stringify(results["Data"]["ZEC"]["FullName"]).length) - 2)));
     })
   }
 
   updateCurrency(currency: string) {
     /* Takes the index at first '(', and substrings from there to the end of the string,
-     * which is the length of the original string, minus the index of the first '(' + 2
+     * which is the length of the original string, minus the index of the first '(' + 1
      */
-    this.currency = currency.substr(currency.indexOf('(') + 1, (currency.length) - (currency.indexOf('(') + 2));
+    this.currency = currency.substr(currency.indexOf('(') + 1, (currency.length) - (currency.indexOf('(') + 1));
   }
 
   updateMarket(market: string) {
@@ -63,9 +60,7 @@ export class CryptoDropdownComponent implements OnInit {
     /*
      * Convert timeframe to what the api uses
      */
-    console.log(this.timeframe)
     this.convertTimeframe();
-    console.log(this.timeframe)
     this._child.chart(this.currency, this.market, this.timeframe)
 
     /*
@@ -74,7 +69,6 @@ export class CryptoDropdownComponent implements OnInit {
     this.currency = "";
     this.market = "";
     this.timeframe = "";
-    console.log(this.timeframe)
   }
 
   convertTimeframe() {
