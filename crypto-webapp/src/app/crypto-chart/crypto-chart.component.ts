@@ -11,35 +11,35 @@ import { OHLC } from '../models/ohlc';
 })
 export class CryptoChartComponent implements OnInit{
 
-  private loaded: boolean;
-  private title: string;
-  private currency: string;
-  private market: string;
-  private timeframe: string;
+  private _loaded: boolean;
+  private _title: string;
+  private _currency: string;
+  private _market: string;
+  private _timeframe: string;
 
-  private crypto_OHLC: any;
-  private objectKeys = Object.keys;
+  private _OHLC: any;
+  private _objectKeys = Object.keys;
 
-  constructor(private ohlc:CryptoService) {
+  constructor(private cryptoService:CryptoService) {
   }
 
   ngOnInit() {
-    this.loaded = false;
+    this._loaded = false;
   }
 
   chart(currency: string, market:string, timeframe: string){
-    this.currency = currency;
-    this.market = market;
-    this.timeframe = timeframe; 
-    this.crypto_OHLC = null;
+    this._currency = currency;
+    this._market = market;
+    this._timeframe = timeframe; 
+    this._OHLC = null;
 
-    this.ohlc.getOHLC(this.timeframe, this.currency, this.market)
+    this.cryptoService.getOHLC(this._timeframe, this._currency, this._market)
     .subscribe(results => {
-      this.crypto_OHLC = results["Data"];
+      this._OHLC = results["Data"];
     })
 
-    this.loaded = true;
-    this.title = currency + " / " + market;
+    this._loaded = true;
+    this._title = currency + " / " + market;
   }
 
 }
