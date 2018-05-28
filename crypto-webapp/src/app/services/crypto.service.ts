@@ -6,8 +6,6 @@ import { Observable } from 'rxjs/Rx';
 export class CryptoService {
 
   private endpoint = 'https://min-api.cryptocompare.com';
-  private _ohlc: any;
-  private _coin_list: any;
 
   constructor(private http: HttpClient) {
   }
@@ -16,13 +14,13 @@ export class CryptoService {
     console.log('Getting OHCL values for ' + fsym + '/' + tsym + ' from: ' + this.endpoint + '/data/histo' +
                  time + '?fsym=' + fsym + '&tsym=' + tsym + '&limit=60&aggregate=1&e=CCCAGG');
     return this.http.get(this.endpoint + '/data/histo' + time + '?fsym=' + fsym + '&tsym=' + tsym + '&limit=60&aggregate=1&e=CCCAGG')
-      .map(result => this._ohlc = result);
+      .map(result => result);
   }
 
   getCoinList() {
     console.log('Getting list of coins from: ' + this.endpoint + '/data/all/coinlist');
     return this.http.get(this.endpoint + '/data/all/coinlist')
-      .map(result => this._coin_list = result);
+      .map(result => result);
   }
 
 }
