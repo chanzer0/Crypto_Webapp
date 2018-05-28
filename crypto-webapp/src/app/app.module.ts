@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { CryptoChartComponent } from './crypto-chart/crypto-chart.component';
 import { DxChartModule } from 'devextreme-angular';
 import { CryptoService } from './services/crypto.service';
+import { TickerComponent } from './ticker/ticker.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { CryptoService } from './services/crypto.service';
     HeaderComponent,
     FooterComponent,
     CryptoChartComponent,
+    TickerComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CryptoChartComponent } from '../crypto-chart/crypto-chart.component';
 import { CryptoService } from '../services/crypto.service';
+import { Coin } from '../models/coin';
 
 @Component({
   selector: 'app-crypto-dropdown',
@@ -13,77 +14,72 @@ export class CryptoDropdownComponent implements OnInit {
   @ViewChild(CryptoChartComponent) private _child:
     CryptoChartComponent;
 
-  private _objectKeys = Object.keys;
-  private _currency = '';
-  private _market = '';
-  private _timeframe = '';
+  private currency = '';
+  private market = '';
+  private timeframe = '';
+  private coin: Coin;
 
-  private _timeframe_list: string[] = [
+  private timeframe_list: string[] = [
     'Intraday (1min)',
     'Intraday (1hr)',
     'Daily (1d)'
   ];
 
-  private _market_list: string[] = [
+  private market_list: string[] = [
     'USD (United States Dollar)',
     'BTC (Bitcoin)'
   ];
 
-  private _currency_list: string[] = [];
+  private currency_list: Coin[] = [];
 
   constructor(private _cryptoService: CryptoService) { }
 
   ngOnInit() {
     this._cryptoService.getCoinList()
     .subscribe(results => {
-      console.log(results);
-      console.log(results['Data']);
-      this._currency_list = results['Data'];
+      console.log(results.data);
+      this.currency_list = results.data;
     });
   }
 
-  updateCurrency(currency: string) {
-    /* Takes the index at first '(', and substrings from there to the end of the string,
-     * which is the length of the original string, minus the index of the first '(' + 1
-     */
-    const startIndex = currency.indexOf('(') + 1;
-    const endIndex  = currency.length - currency.indexOf('(') + 1;
-    this._currency = currency.substr(startIndex, endIndex);
+  updateCurrency(currency: Coin) {
+    this.currency = currency.name;
+    this.coin = currency;
   }
 
   updateMarket(market: string) {
-    this._market = market.substr(0, market.indexOf(' '));
+    this.market = market.substr(0, market.indexOf(' '));
   }
 
   updateTimeframe(time: string) {
     const startIndex = time.indexOf('(') + 1;
     const endIndex  = time.indexOf(')');
-    this._timeframe = time.substring(startIndex, endIndex);
+    this.timeframe = time.substring(startIndex, endIndex);
   }
 
   generateChart() {
     //  If any of the fields have not been set, don't call the API
-    if (this._currency.length === 0 || this._market.length === 0 || this._timeframe.length === 0) {
+    if (this.currency.length === 0 || this.market.length === 0 || this.timeframe.length === 0) {
       return;
     }
 
     //  Change timeframe to what the API uses, then call chart() on child component
     this.convertTimeframe();
-    this._child.chart(this._currency, this._market, this._timeframe);
+    this._child.chart(this.coin.symbol, this.market, this.timeframe);
 
     //  Reset the fields
-    this._currency = '';
-    this._market = '';
-    this._timeframe = '';
+    this.currency = '';
+    this.market = '';
+    this.timeframe = '';
   }
 
   convertTimeframe() {
-    if (this._timeframe === '1d') {
-      this._timeframe = 'day';
-    } else if (this._timeframe === '1hr') {
-      this._timeframe = 'hour';
-    } else if (this._timeframe === '1min') {
-      this._timeframe = 'minute';
+    if (this.timeframe === '1d') {
+      this.timeframe = 'day';
+    } else if (this.timeframe === '1hr') {
+      this.timeframe = 'hour';
+    } else if (this.timeframe === '1min') {
+      this.timeframe = 'minute';
     } else {
       console.log('Error: timeframe not found or valid');
     }
