@@ -32,14 +32,21 @@ export class CryptoDropdownComponent implements OnInit {
 
   private currency_list: Coin[] = [];
 
-  constructor(private _cryptoService: CryptoService) { }
+  constructor(private cryptoService: CryptoService) { }
 
   ngOnInit() {
-    this._cryptoService.getCoinList()
-    .subscribe(results => {
-      console.log(results.data);
-      this.currency_list = results.data;
-    });
+    this.cryptoService.getCoinList()
+    .subscribe(
+      results => {
+        results.data.forEach(coin => {
+          this.currency_list.push(new Coin(coin.id, coin.name, coin.symbol));
+        });
+      },
+      err => {
+        console.log(err);
+      },
+      () => { }
+    );
   }
 
   updateCurrency(currency: Coin) {
@@ -59,7 +66,10 @@ export class CryptoDropdownComponent implements OnInit {
 
   generateChart() {
     //  If any of the fields have not been set, don't call the API
-    if (this.currency.length === 0 || this.market.length === 0 || this.timeframe.length === 0) {
+    if (this.currency.length === 0 ||
+        this.market.length === 0 ||
+        this.timeframe.length === 0 ||
+        !this.coin) {
       return;
     }
 
@@ -71,6 +81,7 @@ export class CryptoDropdownComponent implements OnInit {
     this.currency = '';
     this.market = '';
     this.timeframe = '';
+    this.coin = null;
   }
 
   convertTimeframe() {

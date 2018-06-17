@@ -1,3 +1,19 @@
-<p>
-  ticker works!
-</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">% Change (24hr)</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let coin of this.top_ten_coins">
+        <th scope="row">{{coin.rank}}</th>
+        <td>{{coin.name}} ({{coin.symbol}})</td>
+        <td>
+          {{coin.quotes.USD.percent_change_24h}}%
+          <i class="fa fa-arrow-up"></i>
+        </td>
+      </tr>
+  </tbody>
+</table>

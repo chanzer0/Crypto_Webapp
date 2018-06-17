@@ -3,14 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 
 import { Coin } from '../models/coin';
+import { TopTenCoin } from '../models/top-ten-coin';
 
 @Injectable()
 export class CryptoService {
 
   private cmcEndpoint = 'https://api.coinmarketcap.com/v2';
   private ccEndpoint = 'https://min-api.cryptocompare.com';
-
-  private object: { Data: number[] };
 
   constructor(private http: HttpClient) {
   }
@@ -27,9 +26,8 @@ export class CryptoService {
     return this.http.get<{data: Coin[]}>(this.cmcEndpoint + '/listings/');
   }
 
-  getTopTenCoins(): Observable<{data: Coin[]}> {
-    console.log('Getting top ten coins from: ' + this.cmcEndpoint + '/ticker/?limit=10/');
-    return this.http.get<{data: Coin[]}>(this.cmcEndpoint + '/ticker/?limit=10/');
+  getTopTenCoins(): Observable<{data: TopTenCoin[]}> {
+    console.log('Getting top ten coins from: ' + this.cmcEndpoint + '/ticker/?limit=10');
+    return this.http.get<{data: TopTenCoin[]}>(this.cmcEndpoint + '/ticker/?limit=10');
   }
-
 }
