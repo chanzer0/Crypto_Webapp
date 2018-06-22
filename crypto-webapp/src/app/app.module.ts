@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 
+
 import { AppComponent } from './app.component';
 import { CryptoDropdownComponent } from './crypto-dropdown/crypto-dropdown.component';
 import { HeaderComponent } from './header/header.component';
@@ -26,7 +27,7 @@ import { TickerComponent } from './ticker/ticker.component';
     BrowserModule,
     AlertModule.forRoot(),
     DxChartModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     CryptoService

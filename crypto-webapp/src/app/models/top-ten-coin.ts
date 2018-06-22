@@ -23,6 +23,7 @@ export class TopTenCoin {
  * Here's an example of what the object response
  * looks like for a 'TopTenCoin', Bitcoin.
  */
+
 // "1": {
 //     "id": 1,
 //     "name": "Bitcoin",

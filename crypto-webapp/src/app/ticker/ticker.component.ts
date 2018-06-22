@@ -11,7 +11,7 @@ import { TopTenCoin } from '../models/top-ten-coin';
 export class TickerComponent implements OnInit {
 
   private top_ten_coins: TopTenCoin[] = [];
-  private list: any;
+  private ready: boolean = false;
 
   constructor(private _cryptoService: CryptoService) { }
 
@@ -37,11 +37,17 @@ export class TickerComponent implements OnInit {
               return -1;
             }
           });
-          this.listCoins();
+          this.setCarousel();
         }
       );
   }
 
+  setCarousel(): void {
+    this.ready = true;
+    console.log('ready');
+    this.listCoins();
+  }
+  
   listCoins(): void {
     this.top_ten_coins.forEach(coin => {
       console.log(coin);
