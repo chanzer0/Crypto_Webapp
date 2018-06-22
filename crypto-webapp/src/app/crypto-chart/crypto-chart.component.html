@@ -1,4 +1,4 @@
-<div *ngIf="_loaded" padding-top="25px">
+<div *ngIf="_loaded" style="padding-top: 25px">
     <dx-chart id="chart" title="{{_title}}" [dataSource]="_OHLC">
         <dxi-series name="{{_currency}}" openValueField="open" highValueField="high" lowValueField="low" closeValueField="close">
             <dxo-reduction color="red"></dxo-reduction>
