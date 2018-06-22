@@ -10,8 +10,8 @@ import { TopTenCoin } from '../models/top-ten-coin';
 
 export class TickerComponent implements OnInit {
 
-  private top_ten_coins: TopTenCoin[] = [];
-  private ready: boolean = false;
+  public top_ten_coins: TopTenCoin[] = [];
+  public ready: boolean = false;
 
   constructor(private _cryptoService: CryptoService) { }
 

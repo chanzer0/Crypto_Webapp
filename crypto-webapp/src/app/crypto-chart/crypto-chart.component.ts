@@ -12,14 +12,14 @@ import { OHLC } from '../models/ohlc';
 
 export class CryptoChartComponent implements OnInit {
 
-  private _loaded: boolean;
-  private _title: string;
-  private _currency: string;
-  private _market: string;
-  private _timeframe: string;
+  public _loaded: boolean;
+  public _title: string;
+  public _currency: string;
+  public _market: string;
+  public _timeframe: string;
 
-  private _OHLC: any;
-  private _objectKeys = Object.keys;
+  public _OHLC: any;
+  public _objectKeys = Object.keys;
 
   constructor(private cryptoService: CryptoService) {
   }

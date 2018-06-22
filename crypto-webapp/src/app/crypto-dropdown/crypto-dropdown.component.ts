@@ -14,23 +14,23 @@ export class CryptoDropdownComponent implements OnInit {
   @ViewChild(CryptoChartComponent) private _child:
     CryptoChartComponent;
 
-  private currency = '';
-  private market = '';
-  private timeframe = '';
-  private coin: Coin;
+  public currency = '';
+  public market = '';
+  public timeframe = '';
+  public coin: Coin;
 
-  private timeframe_list: string[] = [
+  public timeframe_list: string[] = [
     'Intraday (1min)',
     'Intraday (1hr)',
     'Daily (1d)'
   ];
 
-  private market_list: string[] = [
+  public market_list: string[] = [
     'USD (United States Dollar)',
     'BTC (Bitcoin)'
   ];
 
-  private currency_list: Coin[] = [];
+  public currency_list: Coin[] = [];
 
   constructor(private cryptoService: CryptoService) { }
 
