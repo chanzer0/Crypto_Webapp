@@ -25,9 +25,8 @@ export class CryptoService {
   //   return this.http.get<{data: Coin[]}>(this.cmcEndpoint + '/listings/');
   // }
 
-  getTopTenCoins() : Observable<TopTenCoin[]> {
+  getTopTenCoins(): Observable<{data: TopTenCoin[]}> {
     console.log('Getting top ten coins from: ' + this.cmcEndpoint + '/ticker/?limit=10');
-    return this.http.get(this.cmcEndpoint + '/ticker/?limit=10')
-                    .map(res => res.data as TopTenCoin[]);
+    return this.http.get<{data: TopTenCoin[]}>(this.cmcEndpoint + '/ticker/?limit=10');
   }
 }

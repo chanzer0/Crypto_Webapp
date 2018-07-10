@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TopTenCoin } from '../../../models/top-ten-coin'
+import { TopTenCoin } from '../../../models/top-ten-coin';
 import { CryptoService } from '../../../services/crypto.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { CryptoService } from '../../../services/crypto.service';
   styleUrls: ['./top-ten.component.css']
 })
 export class TopTenComponent implements OnInit {
-  
-  public TopTenCoins: TopTenCoin[] = []; 
+
+  public TopTenCoins: TopTenCoin[] = [];
 
   constructor(private cryptoService: CryptoService) { }
 
@@ -20,9 +20,12 @@ export class TopTenComponent implements OnInit {
 
   GetTopTenCoins(): void {
     this.cryptoService.getTopTenCoins().subscribe(res => {
-      res.data.forEach(x => {
-        console.log(x);
-      })
+      const data = res.data;
+      Object.keys(data).forEach(coin => {
+        this.TopTenCoins.push(new TopTenCoin(
+          data[coin].id, data[coin].name, data[coin].symbol,
+          data[coin].rank, data[coin].quotes, data[coin].last_updated));
+      });
     }, err => {
       console.log('ERR! - ' + err);
     }, () => {

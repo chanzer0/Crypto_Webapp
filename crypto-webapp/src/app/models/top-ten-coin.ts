@@ -1,16 +1,4 @@
-import { Quote } from "./quotes";
-
-/**
- * Top Ten Coin Interface
- */
-export interface ITopTenCoin {
-    id: number, // ex: '1'
-    name: string, // ex: 'Bitcoin'
-    symbol: string, // ex: 'BTC'
-    rank: number, // ex: '1'
-    quotes: Quote[], // see `quotes.ts` for more
-    last_updated: number
-}
+import { Quote } from './quotes';
 
 /**
  * Top Ten Coin Class
@@ -21,7 +9,7 @@ export class TopTenCoin {
         public name: string, // ex: 'Bitcoin'
         public symbol: string, // ex: 'BTC'
         public rank: number, // ex: '1'
-        public quotes: Quote[], // see `quotes.ts` for more
+        public quotes: Quote, // see `quotes.ts` for more
         public last_updated: number
     ) { }
 }
@@ -29,7 +17,7 @@ export class TopTenCoin {
 /**
  * Here's an example of what the object response
  * looks like for a 'TopTenCoin', Bitcoin.
- * 
+ *
  * "1": {
  *  "id": 1,
  *  "name": "Bitcoin",
@@ -53,6 +41,6 @@ export class TopTenCoin {
  * },
  * "2": {
  *  ...
- * }, 
+ * },
  * ...
  */
