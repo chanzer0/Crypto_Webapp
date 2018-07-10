@@ -5,29 +5,25 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
-import { CryptoDropdownComponent } from './crypto-dropdown/crypto-dropdown.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { CryptoChartComponent } from './crypto-chart/crypto-chart.component';
 import { DxChartModule } from 'devextreme-angular';
 import { CryptoService } from './services/crypto.service';
-import { TickerComponent } from './ticker/ticker.component';
+import { HeaderComponent } from './components/header/header.component';
+import { TopTenComponent } from './components/header/top-ten/top-ten.component';
+import { GainersLosersComponent } from './components/header/gainers-losers/gainers-losers.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CryptoDropdownComponent,
     HeaderComponent,
-    FooterComponent,
-    CryptoChartComponent,
-    TickerComponent,
+    TopTenComponent,
+    GainersLosersComponent
   ],
   imports: [
     BrowserModule,
     AlertModule.forRoot(),
     DxChartModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [
     CryptoService

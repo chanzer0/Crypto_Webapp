@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 
-import { Coin } from '../models/coin';
 import { TopTenCoin } from '../models/top-ten-coin';
 
 @Injectable()
@@ -21,13 +20,14 @@ export class CryptoService {
       .map(result => result);
   }
 
-  getCoinList(): Observable<{data: Coin[]}> {
-    console.log('Getting list of coins from: ' + this.cmcEndpoint + '/listings/');
-    return this.http.get<{data: Coin[]}>(this.cmcEndpoint + '/listings/');
-  }
+  // getCoinList(): Observable<{data: Coin[]}> {
+  //   console.log('Getting list of coins from: ' + this.cmcEndpoint + '/listings/');
+  //   return this.http.get<{data: Coin[]}>(this.cmcEndpoint + '/listings/');
+  // }
 
-  getTopTenCoins(): Observable<{data: TopTenCoin[]}> {
+  getTopTenCoins() : Observable<TopTenCoin[]> {
     console.log('Getting top ten coins from: ' + this.cmcEndpoint + '/ticker/?limit=10');
-    return this.http.get<{data: TopTenCoin[]}>(this.cmcEndpoint + '/ticker/?limit=10');
+    return this.http.get(this.cmcEndpoint + '/ticker/?limit=10')
+                    .map(res => res.data as TopTenCoin[]);
   }
 }

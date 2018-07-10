@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CryptoDropdownComponent } from './crypto-dropdown.component';
+import { GainersLosersComponent } from './gainers-losers.component';
 
-describe('CryptoDropdownComponent', () => {
-  let component: CryptoDropdownComponent;
-  let fixture: ComponentFixture<CryptoDropdownComponent>;
+describe('GainersLosersComponent', () => {
+  let component: GainersLosersComponent;
+  let fixture: ComponentFixture<GainersLosersComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CryptoDropdownComponent ]
+      declarations: [ GainersLosersComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CryptoDropdownComponent);
+    fixture = TestBed.createComponent(GainersLosersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
