@@ -1,3 +1,6 @@
 .container {
     background-color: #8e8d8a;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 5px; /* extra 10px on right for "bar" */
 }

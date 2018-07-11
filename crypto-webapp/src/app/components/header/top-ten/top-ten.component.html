@@ -1,3 +1,6 @@
-<app-top-ten-card *ngFor="let coin of TopTenCoins">
-  [Coin]="coin"
-</app-top-ten-card>
+<li *ngFor="let coin of TopTenCoins">
+  {{coin.name}}
+  {{coin.symbol}}
+  {{coin.id}}
+  {{coin.rank}}
+</li>
