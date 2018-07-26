@@ -10,6 +10,7 @@ import { CryptoService } from './services/crypto.service';
 import { HeaderComponent } from './components/header/header.component';
 import { TopTenComponent } from './components/header/top-ten/top-ten.component';
 import { GainersLosersComponent } from './components/header/gainers-losers/gainers-losers.component';
+import { CoinCardComponent } from './components/header/top-ten/coin-card/coin-card.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { GainersLosersComponent } from './components/header/gainers-losers/gaine
     AppComponent,
     HeaderComponent,
     TopTenComponent,
-    GainersLosersComponent
+    GainersLosersComponent,
+    CoinCardComponent
   ],
   imports: [
     BrowserModule,

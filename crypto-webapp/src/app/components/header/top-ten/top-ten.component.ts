@@ -11,6 +11,7 @@ import { CryptoService } from '../../../services/crypto.service';
 export class TopTenComponent implements OnInit {
 
   public TopTenCoins: TopTenCoin[] = [];
+  public coinIndex: number;
 
   constructor(private cryptoService: CryptoService) { }
 
@@ -22,15 +23,33 @@ export class TopTenComponent implements OnInit {
     this.cryptoService.getTopTenCoins().subscribe(res => {
       const data = res.data;
       Object.keys(data).forEach(coin => {
-        this.TopTenCoins.push(new TopTenCoin(
-          data[coin].id, data[coin].name, data[coin].symbol,
-          data[coin].rank, data[coin].quotes, data[coin].last_updated));
+        this.TopTenCoins.push(
+          new TopTenCoin(
+            data[coin].id, 
+            data[coin].name, 
+            data[coin].symbol,
+            data[coin].rank, 
+            data[coin].quotes, 
+            data[coin].last_updated
+          )
+        );
       });
-    }, err => {
+    },
+    err => {
       console.log('ERR! - ' + err);
-    }, () => {
-
+    }, 
+    () => {
+      this.coinIndex = 0;
     });
+  }
+
+  SelectCoin(direction: number): void {
+    if (this.coinIndex === 0 || this.coinIndex === 9) { return; }
+    this.coinIndex += direction;
+  }
+
+  GetCurrentCoin(): TopTenCoin {
+    return this.TopTenCoins[this.coinIndex];
   }
 
 }

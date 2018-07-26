@@ -1,6 +1,3 @@
-<li *ngFor="let coin of TopTenCoins">
-  {{coin.name}}
-  {{coin.symbol}}
-  {{coin.id}}
-  {{coin.rank}}
-</li>
+<button type="button" class="btn btn-default" (click)="SelectCoin(-1)">Previous</button>
+  <app-coin-card *ngIf="TopTenCoins != null" [coin]="GetCurrentCoin()"></app-coin-card>>
+<button type="button" class="btn btn-default" (click)="SelectCoin(1)">Next</button>
