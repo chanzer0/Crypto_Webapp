@@ -1,25 +1,40 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
 import { TopTenCoin } from '../../../../models/top-ten-coin';
+import { CoinData } from '../../../../models/coin-data';
 
 @Component({
   selector: 'app-coin-card',
   templateUrl: './coin-card.component.html',
   styleUrls: ['./coin-card.component.css']
 })
-export class CoinCardComponent implements OnInit {
+export class CoinCardComponent implements OnChanges {
 
-  @Input() coin: TopTenCoin;
+  @Input() Coin: TopTenCoin;
 
-  iconFileName: string;
+  IconFileName: string;
+  CoinDataModel: CoinData;
 
   constructor() { }
 
-  ngOnInit() {
-    this.LoadIcon(this.coin.symbol);
+  ngOnChanges() {
+    this.LoadIcon(this.Coin.symbol);
+    this.GenerateCoinData(this.Coin);
   }
 
   LoadIcon(symbol: string): void {
-    this.iconFileName = 'assets/img/icons/' + symbol + '.svg';
+    this.IconFileName = 'assets/img/svg/color/' + symbol.toLowerCase() + '.svg';
+    console.log(this.IconFileName);
+  }
+
+  GenerateCoinData(coin: TopTenCoin): void {
+    this.CoinDataModel = {
+      Rank: coin.rank,
+      Name: coin.name,
+      Symbol: coin.symbol,
+      Percentage: coin.quotes.USD.percent_change_24h,
+      Price: coin.quotes.USD.price,
+      Volume: coin.quotes.USD.volume_24h
+    } as CoinData;
   }
 
 }

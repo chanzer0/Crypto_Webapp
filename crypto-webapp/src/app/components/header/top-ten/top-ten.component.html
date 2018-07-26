@@ -1,3 +1,5 @@
-<button type="button" class="btn btn-default" (click)="SelectCoin(-1)">Previous</button>
-  <app-coin-card *ngIf="TopTenCoins != null" [coin]="GetCurrentCoin()"></app-coin-card>>
-<button type="button" class="btn btn-default" (click)="SelectCoin(1)">Next</button>
+<div class="d-flex align-items-center justify-content-between">
+  <button type="button" class="btn btn-default" (click)="PreviousCoin()">Previous</button>
+  <app-coin-card *ngIf="TopTenCoins.length === 10" [Coin]="CurrentCoin"></app-coin-card>
+  <button type="button" class="btn btn-default" (click)="NextCoin()">Next</button>
+</div>

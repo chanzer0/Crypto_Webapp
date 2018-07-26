@@ -11,7 +11,7 @@ import { CryptoService } from '../../../services/crypto.service';
 export class TopTenComponent implements OnInit {
 
   public TopTenCoins: TopTenCoin[] = [];
-  public coinIndex: number;
+  public CurrentCoin: TopTenCoin;
 
   constructor(private cryptoService: CryptoService) { }
 
@@ -39,17 +39,21 @@ export class TopTenComponent implements OnInit {
       console.log('ERR! - ' + err);
     }, 
     () => {
-      this.coinIndex = 0;
+      this.CurrentCoin = this.TopTenCoins[0]; // Set BTC as current
     });
   }
 
-  SelectCoin(direction: number): void {
-    if (this.coinIndex === 0 || this.coinIndex === 9) { return; }
-    this.coinIndex += direction;
+  NextCoin(): void {
+    let index = this.TopTenCoins.findIndex(coin => coin.id === this.CurrentCoin.id);
+    // Pick the next coin, or stay on the last one
+    this.CurrentCoin = this.TopTenCoins[index < 9 ? index + 1 : index];
+    console.log(this.CurrentCoin);
   }
-
-  GetCurrentCoin(): TopTenCoin {
-    return this.TopTenCoins[this.coinIndex];
+  PreviousCoin(): void {
+    let index = this.TopTenCoins.findIndex(coin => coin.id === this.CurrentCoin.id);
+    // Pick the previous coin, or stay on the first one
+    this.CurrentCoin = this.TopTenCoins[index > 0 ? index - 1 : index];
+    console.log(this.CurrentCoin);
   }
 
 }
