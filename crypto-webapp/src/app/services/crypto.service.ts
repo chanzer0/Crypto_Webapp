@@ -20,12 +20,19 @@ export class CryptoService {
       .map(result => result);
   }
 
+  /**
+   * Returns the top 100 coins by percent_change_24h
+   */
+  GetGainers(): Observable<{data: TopTenCoin[]}>{
+    return this.http.get<{data: TopTenCoin[]}>(this.cmcEndpoint + '/ticker/?start=0&limit=100&sort=percent_change_24h&structure=array');
+  }
+
   // getCoinList(): Observable<{data: Coin[]}> {
   //   console.log('Getting list of coins from: ' + this.cmcEndpoint + '/listings/');
   //   return this.http.get<{data: Coin[]}>(this.cmcEndpoint + '/listings/');
   // }
 
-  getTopTenCoins(): Observable<{data: TopTenCoin[]}> {
+  GetTopTenCoins(): Observable<{data: TopTenCoin[]}> {
     console.log('Getting top ten coins from: ' + this.cmcEndpoint + '/ticker/?limit=10');
     return this.http.get<{data: TopTenCoin[]}>(this.cmcEndpoint + '/ticker/?limit=10');
   }

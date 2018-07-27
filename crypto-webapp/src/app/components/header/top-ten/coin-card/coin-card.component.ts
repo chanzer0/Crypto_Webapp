@@ -23,7 +23,6 @@ export class CoinCardComponent implements OnChanges {
 
   LoadIcon(symbol: string): void {
     this.IconFileName = 'assets/img/svg/color/' + symbol.toLowerCase() + '.svg';
-    console.log(this.IconFileName);
   }
 
   GenerateCoinData(coin: TopTenCoin): void {

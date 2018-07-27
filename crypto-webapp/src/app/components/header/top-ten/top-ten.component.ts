@@ -20,7 +20,7 @@ export class TopTenComponent implements OnInit {
   }
 
   GetTopTenCoins(): void {
-    this.cryptoService.getTopTenCoins().subscribe(res => {
+    this.cryptoService.GetTopTenCoins().subscribe(res => {
       const data = res.data;
       Object.keys(data).forEach(coin => {
         this.TopTenCoins.push(
@@ -40,8 +40,7 @@ export class TopTenComponent implements OnInit {
     }, 
     () => {
       this.TopTenCoins = this.SortCoinsByRank(this.TopTenCoins);
-      console.log(this.TopTenCoins);
-      this.CurrentCoin = this.TopTenCoins[0]; // Set BTC as current
+      this.CurrentCoin = this.TopTenCoins[0]; // Set BTC as current coin
     });
   }
   
@@ -56,13 +55,11 @@ export class TopTenComponent implements OnInit {
     let index = this.TopTenCoins.findIndex(coin => coin.id === this.CurrentCoin.id);
     // Pick the next coin, or stay on the last one
     this.CurrentCoin = this.TopTenCoins[index < 9 ? index + 1 : index];
-    console.log(this.CurrentCoin);
   }
   PreviousCoin(): void {
     let index = this.TopTenCoins.findIndex(coin => coin.id === this.CurrentCoin.id);
     // Pick the previous coin, or stay on the first one
     this.CurrentCoin = this.TopTenCoins[index > 0 ? index - 1 : index];
-    console.log(this.CurrentCoin);
   }
 
 }
