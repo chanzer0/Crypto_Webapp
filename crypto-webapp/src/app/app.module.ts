@@ -5,29 +5,30 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
-import { CryptoDropdownComponent } from './crypto-dropdown/crypto-dropdown.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { CryptoChartComponent } from './crypto-chart/crypto-chart.component';
 import { DxChartModule } from 'devextreme-angular';
 import { CryptoService } from './services/crypto.service';
-import { TickerComponent } from './ticker/ticker.component';
-
+import { HeaderComponent } from './components/header/header.component';
+import { TopTenComponent } from './components/header/top-ten/top-ten.component';
+import { GainersLosersComponent } from './components/header/gainers-losers/gainers-losers.component';
+import { CoinCardComponent } from './components/header/top-ten/coin-card/coin-card.component';
+import { CardInfoComponent } from './components/header/top-ten/card-info/card-info.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CryptoDropdownComponent,
     HeaderComponent,
-    FooterComponent,
-    CryptoChartComponent,
-    TickerComponent,
+    TopTenComponent,
+    GainersLosersComponent,
+    CoinCardComponent,
+    CardInfoComponent
   ],
   imports: [
     BrowserModule,
     AlertModule.forRoot(),
     DxChartModule,
-    HttpClientModule,
+    AngularFontAwesomeModule,
+    HttpClientModule
   ],
   providers: [
     CryptoService
