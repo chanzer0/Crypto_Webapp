@@ -3,6 +3,7 @@ h2 {
     color: #383838;
     font-size: 24px;
     font-family: monospace;
+    border-bottom: 1px solid #383838;
 }
 
 li {
