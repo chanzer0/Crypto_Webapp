@@ -15,10 +15,8 @@ export class GainersLosersComponent implements OnInit {
 
   ngOnInit() {
     this.cryptoService.GetGainers().subscribe(gainers => {
-      console.log(gainers);
       this.Gainers = gainers.data.filter(coin => {
         if (coin.quotes.USD.market_cap > 2000000 && coin.quotes.USD.volume_24h > 1000) { 
-          console.log(coin); 
           return coin;
         }
       });

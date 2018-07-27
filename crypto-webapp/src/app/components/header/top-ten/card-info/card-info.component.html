@@ -3,5 +3,5 @@
   <h2>{{CoinDataModel.Rank}}. {{CoinDataModel.Name === 'XRP' ? 'Ripple' : CoinDataModel.Name}} ({{CoinDataModel.Symbol}})</h2>
   <li>Price: ${{CoinDataModel.Price}}</li>
   <li>Last 24Hrs: {{CoinDataModel.Percentage}}%</li>
-  <li>24Hr Volume: {{CoinDataModel.Volume}}</li>
+  <li>24Hr Volume: {{CoinDataModel.Volume.toLocaleString()}}</li>
 </a>
