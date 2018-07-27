@@ -1,6 +1,7 @@
 <a *ngIf="!!CoinDataModel">
   <li>{{CoinDataModel.Rank}}</li>
-  <li>{{CoinDataModel.Name}}</li>
+  <!-- For some reason, XRP's name comes back XRP like it's symbol ~~ this is a temporary fix -->
+  <li>{{CoinDataModel.Name === 'XRP' ? 'Ripple' : CoinDataModel.Name}}</li>
   <li>{{CoinDataModel.Symbol}}</li>
   <li>{{CoinDataModel.Price}}</li>
   <li>{{CoinDataModel.Percentage}}</li>

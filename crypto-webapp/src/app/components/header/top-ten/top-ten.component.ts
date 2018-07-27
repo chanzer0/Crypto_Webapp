@@ -39,9 +39,18 @@ export class TopTenComponent implements OnInit {
       console.log('ERR! - ' + err);
     }, 
     () => {
+      this.TopTenCoins = this.SortCoinsByRank(this.TopTenCoins);
+      console.log(this.TopTenCoins);
       this.CurrentCoin = this.TopTenCoins[0]; // Set BTC as current
     });
   }
+  
+  SortCoinsByRank(coins: TopTenCoin[]): TopTenCoin[] {
+    return coins.sort((a,b) => {
+      return a.rank > b.rank ? 1 : -1
+    });
+  }
+
 
   NextCoin(): void {
     let index = this.TopTenCoins.findIndex(coin => coin.id === this.CurrentCoin.id);
