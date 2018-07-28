@@ -1,0 +1,17 @@
+.col-md-2 {
+    background-color: #8e8d8a;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 2px;
+}
+
+.row {
+    border-radius: 5px;
+    height: 100%;
+}
+
+.btn {
+    background-color: #8f8f8f;
+    height: 50%;
+    margin: 0px;
+}
