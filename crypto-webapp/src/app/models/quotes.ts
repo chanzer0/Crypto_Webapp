@@ -9,5 +9,5 @@ export interface Quote { // Contains all the info on price, volume, % changes
         percent_change_1h: number,
         percent_change_24h: number,
         percent_change_7d: number
-    }
+    };
 }

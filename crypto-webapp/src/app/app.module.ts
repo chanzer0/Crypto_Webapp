@@ -13,6 +13,7 @@ import { GainersLosersComponent } from './components/header/gainers-losers/gaine
 import { CoinCardComponent } from './components/header/top-ten/coin-card/coin-card.component';
 import { CardInfoComponent } from './components/header/top-ten/card-info/card-info.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { BodyComponent } from './components/body/body.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     TopTenComponent,
     GainersLosersComponent,
     CoinCardComponent,
-    CardInfoComponent
+    CardInfoComponent,
+    BodyComponent
   ],
   imports: [
     BrowserModule,

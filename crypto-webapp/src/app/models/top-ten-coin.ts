@@ -1,17 +1,15 @@
 import { Quote } from './quotes';
 
 /**
- * Top Ten Coin Class
+ * Top Ten Coin Interface
  */
-export class TopTenCoin {
-    constructor(
-        public id: number, // ex: '1'
-        public name: string, // ex: 'Bitcoin'
-        public symbol: string, // ex: 'BTC'
-        public rank: number, // ex: '1'
-        public quotes: Quote, // see `quotes.ts` for more
-        public last_updated: number
-    ) { }
+export interface TopTenCoin {
+    id: number; // ex: '1'
+    name: string; // ex: 'Bitcoin'
+    symbol: string; // ex: 'BTC'
+    rank: number; // ex: '1'
+    quotes: Quote; // see `quotes.ts` for more
+    last_updated: number; // timestamp for when it was last_updated
 }
 
 /**
