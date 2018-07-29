@@ -1,16 +1,12 @@
 <div class="col-lg-12">
-  <p> body works! </p>
-  <p> body works! </p>
-  <p> body works! </p>
-  <p> body works! </p>
-  <p> body works! </p>
-  <p> body works! </p>
-  <p> body works! </p>
-  <p> body works! </p>
-  <p> body works! </p>
-  <p> body works! </p>
-  <p> body works! </p>
-  <p> body works! </p>
-  <p> body works! </p>
-  <p> body works! </p>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+      List of cryptocurrencies
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a *ngFor="let coin of CoinList" class="dropdown-item" href="#" (click)="SetCoin(coin)">{{coin.name}}</a>
+    </div>
+  </div>
+  <li *ngIf="!!SelectedCoin">{{SelectedCoin.name}}</li>
 </div>

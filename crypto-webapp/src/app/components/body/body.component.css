@@ -3,3 +3,14 @@
     border-radius: 5px;
     height: 100%;
 }
+
+li {
+    color: #383838;
+    font-size: 22px;
+    font-family: monospace;
+    padding-left: 18px;
+}
+
+.dropdown {
+    padding: 15px;
+}

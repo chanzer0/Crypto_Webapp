@@ -19,6 +19,10 @@ export class CryptoService {
       .map(result => result);
   }
 
+  GetTop300Coins(): Observable<{data: TopTenCoin[]}> {
+    return this.http.get<{data: TopTenCoin[]}>(this.CoinMarketCap + '/ticker/?limit=300&structure=array');
+  }
+
   /**
    * Returns the top 5 coins by percent_change_24h
    */
