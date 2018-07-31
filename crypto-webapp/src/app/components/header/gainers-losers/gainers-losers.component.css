@@ -8,10 +8,27 @@
 .row {
     border-radius: 5px;
     height: 100%;
+    align-items: center;
 }
 
 .btn {
     background-color: #8f8f8f;
-    height: 50%;
+    border-color: #646464;
+    height: 100%;
     margin: 0px;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+li {
+    color: #383838;
+    font-size: 14px;
+    font-family: monospace;
+}
+
+h2 {
+    color: #383838;
+    font-family: monospace;
 }

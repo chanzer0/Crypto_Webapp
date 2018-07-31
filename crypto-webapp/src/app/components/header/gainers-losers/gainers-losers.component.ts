@@ -10,45 +10,44 @@ import { TopTenCoin } from '../../../models/top-ten-coin';
 export class GainersLosersComponent implements OnInit {
 
   public Gainers: TopTenCoin[];
+  public Losers: TopTenCoin[];
+  public GainersSelected = true;
+
 
   constructor(private cryptoService: CryptoService) { }
 
   ngOnInit() {
     this.cryptoService.GetGainers().subscribe(gainers => {
-      this.Gainers = gainers.data.filter(coin => {
-        if (coin.quotes.USD.market_cap > 2000000 && coin.quotes.USD.volume_24h > 1000) { 
-          return coin;
-        }
-      });
-      this.Gainers = this.Gainers.sort((a,b) => {
-        return a.quotes.USD.percent_change_24h > b.quotes.USD.percent_change_24h ? 1 : -1;
-      });
-      this.Gainers = this.Gainers.splice(5);
-      
-    }, err => {
-      console.log(err);
+      console.log(gainers.data);
+      this.Gainers = gainers.data;
     }, () => {
       console.log(this.Gainers);
     });
+
+    this.cryptoService.GetLosers().subscribe(losers => {
+      this.Losers = losers.data;
+    }, () => {
+    });
+    this.SelectLosers();
   }
 
   // /**
   //  * Skim out all the 'fake' gainers -- i.e. coins with very low
   //  * market cap or volume that are subject to P&D groups
   //  * @param coins The top 100 'gainers' as returned by GetGainers()
-  //  * @returns A pruned list of the 5 top 'real' gainers 
+  //  * @returns A pruned list of the 5 top 'real' gainers
   //  */
   // FilterCoins(coins: TopTenCoin[]): TopTenCoin[] {
-  //   let filteredCoins = coins.filter(coin => coin.quotes.USD.market_cap > 20000000 
+  //   let filteredCoins = coins.filter(coin => coin.quotes.USD.market_cap > 20000000
   //                                         && coin.quotes.USD.volume_24h > 10000000);
   //   return filteredCoins;
   // }
 
-  LoadGainers() : void {
-
+  SelectGainers(): void {
+    this.GainersSelected = true;
   }
 
-  LoadLosers(): void {
-
+  SelectLosers(): void {
+    this.GainersSelected = false;
   }
 }

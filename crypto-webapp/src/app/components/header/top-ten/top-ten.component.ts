@@ -20,44 +20,32 @@ export class TopTenComponent implements OnInit {
   }
 
   GetTopTenCoins(): void {
-    this.cryptoService.GetTopTenCoins().subscribe(res => {
-      const data = res.data;
-      Object.keys(data).forEach(coin => {
-        this.TopTenCoins.push(
-          new TopTenCoin(
-            data[coin].id, 
-            data[coin].name, 
-            data[coin].symbol,
-            data[coin].rank, 
-            data[coin].quotes, 
-            data[coin].last_updated
-          )
-        );
-      });
+    this.cryptoService.GetTopTenCoins().subscribe(coins => {
+      this.TopTenCoins = coins.data;
     },
     err => {
       console.log('ERR! - ' + err);
-    }, 
+    },
     () => {
       this.TopTenCoins = this.SortCoinsByRank(this.TopTenCoins);
       this.CurrentCoin = this.TopTenCoins[0]; // Set BTC as current coin
     });
   }
-  
+
   SortCoinsByRank(coins: TopTenCoin[]): TopTenCoin[] {
-    return coins.sort((a,b) => {
-      return a.rank > b.rank ? 1 : -1
+    return coins.sort((a, b) => {
+      return a.rank > b.rank ? 1 : -1;
     });
   }
 
 
   NextCoin(): void {
-    let index = this.TopTenCoins.findIndex(coin => coin.id === this.CurrentCoin.id);
+    const index = this.TopTenCoins.findIndex(coin => coin.id === this.CurrentCoin.id);
     // Pick the next coin, or stay on the last one
     this.CurrentCoin = this.TopTenCoins[index < 9 ? index + 1 : index];
   }
   PreviousCoin(): void {
-    let index = this.TopTenCoins.findIndex(coin => coin.id === this.CurrentCoin.id);
+    const index = this.TopTenCoins.findIndex(coin => coin.id === this.CurrentCoin.id);
     // Pick the previous coin, or stay on the first one
     this.CurrentCoin = this.TopTenCoins[index > 0 ? index - 1 : index];
   }
