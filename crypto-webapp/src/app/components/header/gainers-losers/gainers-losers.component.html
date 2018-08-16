@@ -1,24 +1,25 @@
 <div class="row">
-    <div class="col-md-10" *ngIf="GainersSelected && !!Gainers">
+    <div class="col-md-10">
         <h2>{{GainersSelected ? 'Gainers' : 'Losers'}}</h2>
-        <li *ngFor="let gainer of Gainers">
-            {{Gainers.indexOf(gainer) + 1}}. {{gainer.name}} ({{gainer.symbol}}) -- {{gainer.quotes.USD.price | currency:'USD':'symbol':'1.4-4'}} ({{gainers.quotes.USD.percent_change_24h}}%)
-            <i class="fa fa-up-arrow"></i>
-        </li>
-    </div>
-    <div class="col-md-10" *ngIf="!GainersSelected && !!Losers">
-        <h2>{{GainersSelected ? 'Gainers' : 'Losers'}}</h2>
-        <li *ngFor="let loser of Losers">
-            {{Losers.indexOf(loser) + 1}}. {{loser.name}} ({{loser.symbol}}) -- {{loser.quotes.USD.price | currency:'USD':'symbol':'1.4-4'}} ({{loser.quotes.USD.percent_change_24h}}%)
-            <i class="fa fa-down-arrow"></i>
-        </li>
+        <div *ngIf="GainersSelected && GainersLoaded">
+            <li *ngFor="let gainer of Gainers">
+                {{Gainers.indexOf(gainer) + 1}}. {{gainer.name}} ({{gainer.symbol}}) -- {{gainer.quotes.USD.price | currency:'USD':'symbol':'1.4-4'}} ({{gainers.quotes.USD.percent_change_24h}}%)
+                <i class="fa fa-up-arrow"></i>
+            </li>
+        </div>
+        <div *ngIf="!GainersSelected && LosersLoaded">
+            <li *ngFor="let loser of Losers">
+                {{Losers.indexOf(loser) + 1}}. {{loser.name}} ({{loser.symbol}}) -- {{loser.quotes.USD.price | currency:'USD':'symbol':'1.4-4'}} ({{loser.quotes.USD.percent_change_24h}}%)
+                <i class="fa fa-down-arrow"></i>
+            </li>
+        </div>
     </div>
     <div class="col-md-2">
         <button role="button" class="btn btn-secondary btn-block" (click)="SelectGainers()">
-            <i class="fa fa-up-arrow"></i> Gainers
+            <i class="fa fa-up-arrow"></i>Gainers
         </button>
         <button role="button" class="btn btn-secondary btn-block" (click)="SelectLosers()">
-            <i class="fa fa-down-arrow"></i> Losers
+            <i class="fa fa-down-arrow"></i>Losers
         </button>
     </div>
 </div>

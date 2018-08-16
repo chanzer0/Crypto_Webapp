@@ -11,24 +11,33 @@ export class GainersLosersComponent implements OnInit {
 
   public Gainers: TopTenCoin[];
   public Losers: TopTenCoin[];
-  public GainersSelected = true;
+  public GainersSelected: boolean;
+  public GainersLoaded: boolean;
+  public LosersLoaded: boolean;
 
 
   constructor(private cryptoService: CryptoService) { }
 
   ngOnInit() {
+    this.GainersLoaded = false;
     this.cryptoService.GetGainers().subscribe(gainers => {
       console.log(gainers.data);
       this.Gainers = gainers.data;
     }, () => {
+      this.GainersLoaded = true;
       console.log(this.Gainers);
     });
 
+    this.LosersLoaded = true;
     this.cryptoService.GetLosers().subscribe(losers => {
+      console.log(losers.data);
       this.Losers = losers.data;
     }, () => {
+      this.LosersLoaded = true;
+      console.log(this.Losers);
     });
-    this.SelectLosers();
+
+    this.SelectGainers();
   }
 
   // /**
