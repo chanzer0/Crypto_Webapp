@@ -1,11 +1,13 @@
-<div class="col-xs-12">
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      List of cryptocurrencies
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a *ngFor="let coin of CoinList" class="dropdown-item" href="#" (click)="SetCoin(coin)">{{coin.name}}</a>
-    </div>
+<div class="row">
+  <div class="col-6">
+    <combo-box *ngIf="ready"
+               [options]="CoinList" 
+               [render]="'fullname'"
+               [placeholder]="'Bitcoin (BTC)'"
+               (callback)="SetCoin($event)">
+    </combo-box>
   </div>
-  <li *ngIf="SelectedCoin">{{SelectedCoin.name}}</li>
+  <div class="col-6">
+    <li *ngIf="SelectedCoin">{{SelectedCoin.fullname}}</li>
+  </div>
 </div>

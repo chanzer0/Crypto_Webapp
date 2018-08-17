@@ -1,0 +1,18 @@
+<div class="dropdown" lmrDropdown>
+    <div class="input-group dropdown-toggle" id="dropdown" (click)="onTouched(); clearInput()" lmrDropdownToggle>
+        <input  [(ngModel)]="displayString"
+                [placeholder]="placeholderString"
+                class="form-control">
+        <button class="btn dropdown-button">
+            <i class="fa fa-angle-down"></i>
+        </button>
+    </div>
+    <ul class="dropdown-menu" aria-labelledby="dropdown" role="menu" lmrDropdownMenu>
+        <li *ngFor="let option of options | filter: displayString; let i = index"
+            role="menuitem"
+            (click)="selectOption(option)"
+            class="dropdown-item">
+                <a href="" onclick="return false;">{{ propertyToDisplay !== undefined ? option[propertyToDisplay] : option }}</a>
+        </li>
+    </ul>
+</div>
