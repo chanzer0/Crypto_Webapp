@@ -7,7 +7,7 @@ import { CoinData } from '../../../../models/coin-data';
   templateUrl: './card-info.component.html',
   styleUrls: ['./card-info.component.css']
 })
-export class CardInfoComponent{
+export class CardInfoComponent {
 
   @Input() CoinDataModel: CoinData;
 

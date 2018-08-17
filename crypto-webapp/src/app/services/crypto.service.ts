@@ -34,7 +34,7 @@ export class CryptoService {
    * Kinda backwards -- &sort=percent_change_24hr then go to the last results -- start=1690
    */
   GetLosers(): Observable<{data: TopTenCoin[]}> {
-    return this.http.get<{data: TopTenCoin[]}>(this.CoinMarketCap + '/ticker/?start=1500&limit=5&sort=percent_change_24h&structure=array');
+    return this.http.get<{data: TopTenCoin[]}>(this.CoinMarketCap + '/ticker/?start=1590&limit=5&sort=percent_change_24h&structure=array');
   }
 
   /**

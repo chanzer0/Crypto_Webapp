@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { GainersLosersComponent } from '../../../../app/components/header/gainers-losers/gainers-losers.component';
 
-import { GainersLosersComponent } from './gainers-losers.component';
 
 describe('GainersLosersComponent', () => {
   let component: GainersLosersComponent;

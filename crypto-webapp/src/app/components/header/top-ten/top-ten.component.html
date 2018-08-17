@@ -1,5 +1,5 @@
 <div class="d-flex align-items-center justify-content-between">
   <i class="fa fa-3x fa-chevron-left" (click)="PreviousCoin()" aria-hidden="true"></i>
-  <app-coin-card id="coin-card" *ngIf="TopTenCoins.length === 10" [Coin]="CurrentCoin"></app-coin-card>
+  <app-coin-card *ngIf="TopTenCoins.length === 10" [Coin]="CurrentCoin"></app-coin-card>
   <i class="fa fa-3x fa-chevron-right" (click)="NextCoin()" aria-hidden="true"></i>
 </div>

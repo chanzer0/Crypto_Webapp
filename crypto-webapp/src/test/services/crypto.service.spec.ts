@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
+import { CryptoService } from '../../app/services/crypto.service';
 
-import { CryptoService } from './crypto.service';
 
 describe('CryptoService', () => {
   beforeEach(() => {
