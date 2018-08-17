@@ -27,6 +27,7 @@ export class TopTenComponent implements OnInit {
       console.log('ERR! - ' + err);
     },
     () => {
+      this.AddFullName();
       this.TopTenCoins = this.SortCoinsByRank(this.TopTenCoins);
       this.CurrentCoin = this.TopTenCoins[0]; // Set BTC as current coin
     });
@@ -38,6 +39,11 @@ export class TopTenComponent implements OnInit {
     });
   }
 
+  AddFullName(): void {
+    this.TopTenCoins.forEach(coin => {
+      coin.fullname =  coin.name + ` (${coin.symbol})`;
+    });
+  }
 
   NextCoin(): void {
     const index = this.TopTenCoins.findIndex(coin => coin.id === this.CurrentCoin.id);

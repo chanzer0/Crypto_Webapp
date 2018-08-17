@@ -29,6 +29,7 @@ export class CoinCardComponent implements OnChanges {
     this.CoinDataModel = {
       Rank: coin.rank,
       Name: coin.name,
+      FullName: coin.fullname,
       Symbol: coin.symbol,
       Percentage: coin.quotes.USD.percent_change_24h,
       Price: coin.quotes.USD.price,

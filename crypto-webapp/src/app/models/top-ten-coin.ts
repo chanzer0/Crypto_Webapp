@@ -6,6 +6,7 @@ import { Quote } from './quotes';
 export interface TopTenCoin {
     id: number; // ex: '1'
     name: string; // ex: 'Bitcoin'
+    fullname: string; // ex: 'Bitcoin (BTC)'
     symbol: string; // ex: 'BTC'
     rank: number; // ex: '1'
     quotes: Quote; // see `quotes.ts` for more

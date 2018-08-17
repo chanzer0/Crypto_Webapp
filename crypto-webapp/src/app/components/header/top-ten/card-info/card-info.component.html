@@ -1,5 +1,5 @@
 <a *ngIf="!!CoinDataModel">
-  <h2>{{CoinDataModel.Rank}}. {{CoinDataModel.Name}})</h2>
+  <h2>{{CoinDataModel.Rank}}. {{CoinDataModel.FullName}}</h2>
   <li>Price: {{CoinDataModel.Price | currency}}</li>
   <li>Last 24Hrs: {{CoinDataModel.Percentage}}%</li>
   <li>24Hr Volume: {{CoinDataModel.Volume.toLocaleString()}}</li>
