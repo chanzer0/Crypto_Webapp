@@ -1,13 +1,15 @@
 <div class="row">
-  <div class="col-6">
-    <combo-box *ngIf="ready"
-               [options]="CoinList" 
-               [render]="'fullname'"
-               [placeholder]="'Bitcoin (BTC)'"
-               (callback)="SetCoin($event)">
-    </combo-box>
-  </div>
-  <div class="col-6">
-    <li *ngIf="SelectedCoin">{{SelectedCoin.fullname}}</li>
-  </div>
+  <span class="col-12">
+    <div class="d-flex flex-row">
+      <combo-box *ngIf="ready"
+                 [options]="CoinList" 
+                 [render]="'fullname'"
+                 [placeholder]="'Bitcoin (BTC)'"
+                 (callback)="SetCoin($event)">
+      </combo-box>
+      <li *ngIf="SelectedCoin" style="float:right">
+        {{SelectedCoin.fullname}} ~ {{SelectedCoin.quotes.USD.price | currency}} ~ {{SelectedCoin.quotes.USD.percent_change_24h}}% (24h) ~ {{SelectedCoin.quotes.USD.percent_change_7d}}% (7d)
+      </li>
+    </div>
+  </span>
 </div>
