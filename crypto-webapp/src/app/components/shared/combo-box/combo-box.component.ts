@@ -38,7 +38,6 @@ export class ComboBoxComponent extends CustomValueAccessor {
 	}
 
 	set model(newModel: Object) {
-		console.log(newModel);
 		if (!newModel) {
 			this._model = newModel;
 			return;
@@ -53,7 +52,6 @@ export class ComboBoxComponent extends CustomValueAccessor {
 
 	ngOnInit(): void {
 		this.placeholderString = this.placeholder ? this.placeholder : '';
-		console.log(this.options);
 	}
 
 	selectOption(option: Object): void {

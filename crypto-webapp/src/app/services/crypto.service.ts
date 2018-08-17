@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { TopTenCoin } from '../models/top-ten-coin';
+import { OHLC } from '../models/ohlc';
 
 @Injectable()
 export class CryptoService {
@@ -12,11 +13,9 @@ export class CryptoService {
 
   constructor(private http: HttpClient) { }
 
-  getOHLC(time: string, fsym: string, tsym: string) {
-    console.log('Getting OHCL values for ' + fsym + '/' + tsym + ' from: ' + this.CryptoCompare + '/data/histo' +
-                 time + '?fsym=' + fsym + '&tsym=' + tsym + '&limit=60&aggregate=1&e=CCCAGG');
-    return this.http.get(this.CryptoCompare + '/data/histo' + time + '?fsym=' + fsym + '&tsym=' + tsym + '&limit=60&aggregate=1&e=CCCAGG')
-      .map(result => result);
+  getOHLC(): Observable<{data: OHLC[]}> {
+    // https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=60&aggregate=1&e=CCCAGG
+    return this.http.get<{data: OHLC[]}>(this.CryptoCompare + '/data/histoday?fsym=BTC&tsym=USD&limit=60&aggregate=1&e=CCCAGG');
   }
 
   GetTop300Coins(): Observable<{data: TopTenCoin[]}> {

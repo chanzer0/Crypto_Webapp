@@ -1,3 +1,4 @@
+import { ChartComponent } from './components/body/chart/chart.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -6,10 +7,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AlertModule } from 'ngx-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DxChartModule } from 'devextreme-angular';
 
 
 import { AppComponent } from './app.component';
-import { DxChartModule } from 'devextreme-angular';
 import { CryptoService } from './services/crypto.service';
 import { HeaderComponent } from './components/header/header.component';
 import { TopTenComponent } from './components/header/top-ten/top-ten.component';
@@ -38,6 +39,7 @@ import { DropdownConfig } from './components/shared/dropdown/dropdown-config';
     DropdownDirective,
     DropdownMenuDirective,
     DropdownToggleDirective,
+    ChartComponent,
     DropdownAnchorDirective,
     MultiComboBoxComponent,
     BoxComponent
