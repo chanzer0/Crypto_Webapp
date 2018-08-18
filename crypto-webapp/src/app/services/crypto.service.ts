@@ -9,21 +9,25 @@ import { OHLC } from '../models/ohlc';
 export class CryptoService {
 
   private CoinMarketCap = 'https://api.coinmarketcap.com/v2';
-  private CoinApi = 'https://rest.coinapi.io';
+  private CryptoCompare = 'https://min-api.cryptocompare.com';
 
   constructor(private http: HttpClient) { }
 
-  GetOHLC(symbol_id: string, period_id: string, limit: string): Observable<OHLC[]> {
-    const url = `/v1/ohlcv/${symbol_id}/latest?period_id=${period_id}&limit=${limit}`;
-    const headers = new HttpHeaders({
-      'X-CoinAPI-Key':  'A348BE64-EC9E-4B9A-B13F-A03343954C51',
-      'Accept': 'application/json'
-    });
-    return this.http.get<OHLC[]>(this.CoinApi + url, { headers: headers });
+  /**
+   * Gets OHLC historical data from the CryptoCompare api
+   * @param timeframe 'day' or 'hour' or 'minute'
+   * @param fsym the crypto in question 'BTC' or 'ETH' or 'LINK'
+   * @param tsym the currency to convert to -- 'USD' or 'GBP' or 'BTC' or 'ETH'
+   * @param limit # of datapoints ot return -- aka how many "bars"
+   */
+  GetOHLC(timeframe: string, fsym: string, tsym: string, limit: string): Observable<{Data: OHLC[]}> {
+    const url = `/data/histo${timeframe}?fsym=${fsym}&tsym=${tsym}&limit=${limit}`;
+    return this.http.get<{Data: OHLC[]}>(this.CryptoCompare + url);
   }
 
   GetTop300Coins(): Observable<{data: TopTenCoin[]}> {
-    return this.http.get<{data: TopTenCoin[]}>(this.CoinMarketCap + '/ticker/?limit=300&structure=array');
+    const url = '/ticker/?limit=300&structure=array';
+    return this.http.get<{data: TopTenCoin[]}>(this.CoinMarketCap + url);
   }
 
   /**

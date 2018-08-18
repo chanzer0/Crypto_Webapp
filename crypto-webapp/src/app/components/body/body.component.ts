@@ -15,8 +15,12 @@ export class BodyComponent implements OnInit {
   public CoinList: TopTenCoin[];
   public SelectedCoin: TopTenCoin;
   public OHLC_DataSet: OHLC[];
+
   public Duration: string;
-  public DurationOptions: string[] = [];
+  public DurationOptions: string[] = [ 'Minutes', 'Hours', 'Days' ];
+
+  public DurationAmount: string;
+  public DurationAmountOptions: string[] = [ '100', '200', '300', '400', '500' ];
 
   constructor(private cryptoService: CryptoService) { }
 
@@ -27,11 +31,6 @@ export class BodyComponent implements OnInit {
       this.SortCoinsByRank();
       this.AddFullName();
     });
-    this.DurationOptions.push(
-      DurationMinutes.ONE, DurationMinutes.FIVE, DurationMinutes.THIRTY,
-      DurationHours.ONE, DurationHours.FOUR, DurationHours.TWELVE,
-      DurationDays.ONE, DurationDays.TWO, DurationDays.FIVE, DurationDays.SEVEN
-    );
   }
 
   SortCoinsByRank(): void {
@@ -53,5 +52,9 @@ export class BodyComponent implements OnInit {
 
   SetDuration(duration: string): void {
     this.Duration = duration;
+  }
+
+  SetDurationAmount(duration: string): void {
+    this.DurationAmount = duration;
   }
 }

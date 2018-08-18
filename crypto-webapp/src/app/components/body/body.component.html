@@ -1,5 +1,7 @@
 <div class="row">
   <div class="col-3">
+      <br>
+      <br>
     <h2>Crypto</h2>
       <combo-box *ngIf="CoinList != null"
                  [options]="CoinList" 
@@ -8,10 +10,19 @@
                  (callback)="SetCoin($event)">
       </combo-box>
       <br>
+      <br>
+    <h2>Datapoints</h2>
+      <combo-box *ngIf="DurationAmountOptions != null"
+                 [options]="DurationAmountOptions"
+                 [placeholder]="'300'"
+                 (callback)="SetDurationAmount($event)">
+      </combo-box>
+      <br>
+      <br>
     <h2>Timeframe</h2>
       <combo-box *ngIf="DurationOptions != null"
                  [options]="DurationOptions"
-                 [placeholder]="'5DAY'"
+                 [placeholder]="'Days'"
                  (callback)="SetDuration($event)">
       </combo-box>
   </div>
@@ -19,7 +30,8 @@
     <!-- If no coin is selected, use Bitcoin -->
     <app-chart *ngIf="CoinList != null" 
                [coin]="SelectedCoin ? SelectedCoin : CoinList[0]"
-               [duration]="Duration ? Duration : '5DAY'">
+               [duration]="Duration ? Duration : 'Days'"
+               [durationAmount]="DurationAmount ? DurationAmount : '300'">
     </app-chart>
   </div>
 </div>
