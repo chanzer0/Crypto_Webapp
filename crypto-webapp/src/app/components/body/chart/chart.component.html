@@ -1,18 +1,18 @@
-<div *ngIf="ohlc != null" padding-top="15px">
-    <dx-chart id="chart" title="coin.fullname" [dataSource]="ohlc">
+<div *ngIf="coin != null" padding-top="15px">
+    <dx-chart id="chart" title="{{coin.fullname}}" [dataSource]="ohlc">
         <dxi-series 
-            name="coin.fullname" 
-            openValueField="open"
-            highValueField="high" 
-            lowValueField="low" 
-            closeValueField="close">
+            name="{{coin.fullname}}" 
+            openValueField="price_open"
+            highValueField="price_high" 
+            lowValueField="price_low" 
+            closeValueField="price_close">
             <dxo-reduction color="red"></dxo-reduction>
         </dxi-series>
-        <dxo-common-series-settings argumentField="time" type="candlestick">
+        <dxo-common-series-settings argumentField="friendly_date" type="candlestick">
         </dxo-common-series-settings>
         <dxo-legend itemTextPosition="left"></dxo-legend>
-        <dxi-value-axis [tickInterval]="1">
-            <dxo-title text="'balogna sammitch'"></dxo-title>
+        <dxi-value-axis [tickInterval]="100">
+            <dxo-title text="Price (USD)"></dxo-title>
             <dxo-label>
                 <dxo-format type="currency" [precision]="0">
                 </dxo-format>

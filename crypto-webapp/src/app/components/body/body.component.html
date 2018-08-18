@@ -1,13 +1,16 @@
 <div class="row">
-  <div class="col-xs-4">
-      <combo-box *ngIf="ready"
+  <div class="col-3">
+      <combo-box *ngIf="CoinList != null"
                  [options]="CoinList" 
                  [render]="'fullname'"
                  [placeholder]="'Bitcoin (BTC)'"
                  (callback)="SetCoin($event)">
       </combo-box>
   </div>
-  <div class="col-xs-8">
-    <app-chart *ngIf="SelectedCoin" [coin]="SelectedCoin"></app-chart>
+  <div class="col-9">
+    <!-- If no coin is selected, use Bitcoin -->
+    <app-chart *ngIf="CoinList != null" 
+               [coin]="SelectedCoin ? SelectedCoin : CoinList[0]">
+    </app-chart>
   </div>
 </div>

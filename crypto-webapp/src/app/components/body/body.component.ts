@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CryptoService } from '../../services/crypto.service';
 import { TopTenCoin } from '../../models/top-ten-coin';
+import { OHLC } from '../../models/ohlc';
 
 @Component({
   selector: 'app-body',
@@ -11,17 +12,16 @@ export class BodyComponent implements OnInit {
 
   public CoinList: TopTenCoin[];
   public SelectedCoin: TopTenCoin;
-  public ready = false;
+  public OHLC_DataSet: OHLC[];
 
   constructor(private cryptoService: CryptoService) { }
 
   ngOnInit() {
     this.cryptoService.GetTop300Coins().subscribe(coins => {
       this.CoinList = coins.data;
-    }, err => { console.log(err); }, () => {
+    }, err => { }, () => {
       this.SortCoinsByRank();
       this.AddFullName();
-      this.ready = true;
     });
   }
 
