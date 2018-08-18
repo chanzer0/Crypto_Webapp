@@ -1,3 +1,7 @@
 .fa {
     color: #8e8d8a;
 }
+
+.fa:hover {
+    color: #6E6E6E;
+}

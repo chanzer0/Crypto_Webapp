@@ -1,16 +1,25 @@
 <div class="row">
   <div class="col-3">
+    <h2>Crypto</h2>
       <combo-box *ngIf="CoinList != null"
                  [options]="CoinList" 
                  [render]="'fullname'"
                  [placeholder]="'Bitcoin (BTC)'"
                  (callback)="SetCoin($event)">
       </combo-box>
+      <br>
+    <h2>Timeframe</h2>
+      <combo-box *ngIf="DurationOptions != null"
+                 [options]="DurationOptions"
+                 [placeholder]="'5DAY'"
+                 (callback)="SetDuration($event)">
+      </combo-box>
   </div>
   <div class="col-9">
     <!-- If no coin is selected, use Bitcoin -->
     <app-chart *ngIf="CoinList != null" 
-               [coin]="SelectedCoin ? SelectedCoin : CoinList[0]">
+               [coin]="SelectedCoin ? SelectedCoin : CoinList[0]"
+               [duration]="Duration ? Duration : '5DAY'">
     </app-chart>
   </div>
 </div>

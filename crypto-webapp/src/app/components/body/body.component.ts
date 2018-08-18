@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CryptoService } from '../../services/crypto.service';
 import { TopTenCoin } from '../../models/top-ten-coin';
 import { OHLC } from '../../models/ohlc';
+import { DurationSeconds, DurationMinutes,
+  DurationHours, DurationDays } from '../../models/duration';
 
 @Component({
   selector: 'app-body',
@@ -13,6 +15,8 @@ export class BodyComponent implements OnInit {
   public CoinList: TopTenCoin[];
   public SelectedCoin: TopTenCoin;
   public OHLC_DataSet: OHLC[];
+  public Duration: string;
+  public DurationOptions: string[] = [];
 
   constructor(private cryptoService: CryptoService) { }
 
@@ -23,6 +27,11 @@ export class BodyComponent implements OnInit {
       this.SortCoinsByRank();
       this.AddFullName();
     });
+    this.DurationOptions.push(
+      DurationMinutes.ONE, DurationMinutes.FIVE, DurationMinutes.THIRTY,
+      DurationHours.ONE, DurationHours.FOUR, DurationHours.TWELVE,
+      DurationDays.ONE, DurationDays.TWO, DurationDays.FIVE, DurationDays.SEVEN
+    );
   }
 
   SortCoinsByRank(): void {
@@ -40,5 +49,9 @@ export class BodyComponent implements OnInit {
 
   SetCoin(coin: TopTenCoin): void {
     this.SelectedCoin = coin;
+  }
+
+  SetDuration(duration: string): void {
+    this.Duration = duration;
   }
 }
