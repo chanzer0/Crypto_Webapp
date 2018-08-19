@@ -19,6 +19,7 @@ export class ChartComponent implements OnChanges {
   constructor(private cryptoService: CryptoService) { }
 
   ngOnChanges() {
+    this.ohlc = null;
     this.LoadChartData(this.coin, this.duration, this.durationAmount);
   }
 
@@ -43,4 +44,25 @@ export class ChartComponent implements OnChanges {
       Object.defineProperty(data, 'friendly_date', { value: date });
     });
   }
+
+  GetInterval(): number {
+    if (this.coin.quotes.USD.price > 1000) {
+      return 100;
+    }
+    if (this.coin.quotes.USD.price > 100) {
+      return 25;
+    }
+    if (this.coin.quotes.USD.price > 10) {
+      return 5;
+    }
+    if (this.coin.quotes.USD.price > 1) {
+      return 1;
+    }
+    return 0.25;
+  }
+
+  GetPrecision(): number {
+    return this.coin.quotes.USD.price > 1 ? 0 : 2;
+  }
+
 }

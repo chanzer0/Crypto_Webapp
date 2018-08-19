@@ -14,7 +14,7 @@
     <h2>Datapoints</h2>
       <combo-box *ngIf="DurationAmountOptions != null"
                  [options]="DurationAmountOptions"
-                 [placeholder]="'300'"
+                 [placeholder]="'500'"
                  (callback)="SetDurationAmount($event)">
       </combo-box>
       <br>
@@ -31,7 +31,7 @@
     <app-chart *ngIf="CoinList != null" 
                [coin]="SelectedCoin ? SelectedCoin : CoinList[0]"
                [duration]="Duration ? Duration : 'Days'"
-               [durationAmount]="DurationAmount ? DurationAmount : '300'">
+               [durationAmount]="DurationAmount ? DurationAmount : '500'">
     </app-chart>
   </div>
 </div>
